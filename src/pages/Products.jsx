@@ -25,7 +25,7 @@ const Products = () => {
                 <img className="w-full h-64 object-contain p-4" src={product.image}></img>
                 <div className="px-4 py-2">
                 <h2 className="text-xl font-semibold text-cyan-800">{product.title}</h2>
-                <h5 className="text-xl text-black">{product.price}</h5>
+                <h5 className="text-xl text-black">₹{product.price}</h5>
                 <p className="">{product.description}</p>
               </div>
               </div>
