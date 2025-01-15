@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCart } from "../cart/CartSlice";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+ 
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -35,6 +39,9 @@ const Products = () => {
                   </h2>
                   <h5 className="text-xl text-black">₹{product.price}</h5>
                   <p className="">{product.description}</p>
+                </div>
+                <div className="px-4 py-2">
+                <button onClick={() =>  dispatch(addCart())} className="bg-blue-500 text-white px-3 py-2">Add to Cart</button>
                 </div>
               </div>
             );
