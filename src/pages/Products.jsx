@@ -7,7 +7,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
  
-  useEffect(() => {
+  useEffect(() => { 
     fetchProducts();
   }, []);
 
@@ -41,7 +41,7 @@ const Products = () => {
                   <p className="">{product.description}</p>
                 </div>
                 <div className="px-4 py-2">
-                <button onClick={() =>  dispatch(addCart())} className="bg-blue-500 text-white px-3 py-2">Add to Cart</button>
+                <button onClick={() =>  dispatch(addCart(product))} className="bg-blue-500 text-white px-3 py-2">Add to Cart</button>
                 </div>
               </div>
             );
