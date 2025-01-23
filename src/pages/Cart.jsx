@@ -25,19 +25,19 @@ const Cart = () => {
   
    const handlePayment = () => {
      const options = {
-       key: "rzp_test_oQv2jp6M7fDLH6", 
-       amount: totalAmount * 100, 
+       key: process.env.KEY_ID,
+       amount: totalAmount * 100,
        currency: "INR",
        name: "Ecommerce App",
        description: "Testing",
        handler: function (response) {
          alert("Payment Successful!");
-         console.log(response); 
+         console.log(response);
        },
        prefill: {
-         name: "Meghana K", 
-         email: "kulalmeghu@gmail.com", 
-         contact: "7356716131", 
+         name: "Meghana K",
+         email: "kulalmeghu@gmail.com",
+         contact: "7356716131",
        },
        theme: {
          color: "#3399cc",
