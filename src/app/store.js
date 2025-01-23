@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import CartSlice from "../cart/CartSlice";
-import process from "process";
 
 const persistConfig = {
   key: "cart",
@@ -14,7 +13,7 @@ export const store = configureStore({
   reducer: {
     cart: persistedReducer,
   },
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: import.meta.env.VITE_NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
