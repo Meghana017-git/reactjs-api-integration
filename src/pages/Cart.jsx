@@ -27,7 +27,7 @@ const Cart = () => {
    const handlePayment = () => {
      const options = {
        key: VITE_RAZORPAY_KEY,
-       amount: totalAmount * 100,
+       amount: Math.round(totalAmount * 100),
        currency: "INR",
        name: "Ecommerce App",
        description: "Testing",
