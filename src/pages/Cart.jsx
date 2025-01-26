@@ -1,6 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineMinus } from "react-icons/ai";
 import React, { useEffect } from "react";
+const { VITE_RAZORPAY_KEY } = import.meta.env
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseCart,
@@ -25,7 +26,7 @@ const Cart = () => {
   
    const handlePayment = () => {
      const options = {
-       key: process.env.KEY_ID,
+       key: VITE_RAZORPAY_KEY,
        amount: totalAmount * 100,
        currency: "INR",
        name: "Ecommerce App",
