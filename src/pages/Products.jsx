@@ -6,27 +6,30 @@ import { useQuery } from "@tanstack/react-query";
 import { FaSpinner } from "react-icons/fa6";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
 
-  useEffect(() => { 
-    fetchProducts();
-  }, []);
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
 
   const fetchProducts = async () => {
     try {
-      
       const response = await axios.get("https://fakestoreapi.com/products");
-      setProducts(response.data);
+      return response.data;
+      // setProducts(response.data);
     } catch (error) {
       console.error("error fetching products", error);
     }
   };
-    const { isLoading } = useQuery({
-      queryKey: ["products"],
-      queryFn: fetchProducts,
-    });
-    
+  const { data, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+    refetchOnWindowFocus: false,
+  });
+
+  console.log("data", isLoading, data);
+
   return (
     <>
       {isLoading ? (
@@ -36,7 +39,7 @@ const Products = () => {
       ) : (
         <div className="container mx-auto">
           <div className="grid grid-cols-4 gap-8">
-            {products.map((product) => {
+            {data.map((product) => {
               return (
                 <div
                   key={product.id}
