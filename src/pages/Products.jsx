@@ -15,14 +15,13 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      
       const response = await axios.get("https://fakestoreapi.com/products");
       setProducts(response.data);
     } catch (error) {
       console.error("error fetching products", error);
     }
   };
-    const { isLoading } = useQuery({
+    const { isLoading, data } = useQuery({
       queryKey: ["products"],
       queryFn: fetchProducts,
     });
@@ -36,7 +35,7 @@ const Products = () => {
       ) : (
         <div className="container mx-auto">
           <div className="grid grid-cols-4 gap-8">
-            {products.map((product) => {
+            {data.map((product) => {
               return (
                 <div
                   key={product.id}
